@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in or Register</title>
+    {% load static %}
+    <link rel="stylesheet" type = "text/css" href="{%static 'login_reg_app/css/style.css'%}">
+</head>
+<body>
+    <!-- wrapper starts below -->
+    <div class="wrapper">
+    <!-- Registration div starts below -->
+        <div class="english">
+    <!-- Registration form start below -->
+    {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form class="geometry" method="POST" action="/regpro">
+            <h1>Register Below</h1>
+                <h6>First Name:</h6><input type="text" name="first">
+                <h6>Last Name:</h6><input type="text" name="last">
+                <h6>Email:</h6><input type="email" name="email">
+                <h6>Password:</h6><input type="password" name="password">
+                <h6>Password Confirmation:</h6><input type="password" name="password_confirmation">
+                <input class="button" type="submit" value="Register">
+            {%csrf_token%}
+            </form> <!-- Registration form end -->
+    <!-- Login div starts here / content below -->    
+            <div class="algebra">
+    <!-- Login form start -->
+                <form class="logic" method="POST" action="/logpro">
+                <h1>Login</h1>
+                    <h6>Email:</h6><input type="email" name="email">
+                    <h6>Password:</h6><input type="password" name="password">
+                    <input class="button" type="submit" value="Login">
+                {%csrf_token%}
+                </form>
+    <!-- Login form end -->
+            </div> <!-- Registration div end tag -->
+        </div> <!-- Login div end tag -->
+    </div> <!-- Wrapper div eng tag -->
+</body>
+</html>
+
+
